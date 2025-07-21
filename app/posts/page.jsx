@@ -1,0 +1,19 @@
+import Link from "next/link";
+export default async function Posts() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const posts=await res.json();
+  console.log("posts page");
+  return (
+   <>
+    <h1 className="text-4xl text-center m-4 mt-8">Posts</h1>
+    <div className="flex flex-row m-3 p-1 flex-wrap justify-center">
+    {posts.map((post)=>(
+      <Link href={`./posts/${post.id}`}><div key={post.id} className="bg-gray-200 m-3 p-3 min-h-2 rounded-2xl max-w-2xs min-w-2xs shadow-2xs hover:shadow-2xl cursor-pointer"> 
+        <p className="font-bold text-center">{post.title}</p>
+      </div>
+      </Link>
+    ))}
+    </div>
+   </>
+  );
+}
