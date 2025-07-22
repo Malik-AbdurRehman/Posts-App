@@ -10,10 +10,10 @@ export default function Comments({postId}){
 
     const [commentInput,setCommentInput]=useState("");
 
-    const handleAddCommentButton=(e)=>{
+    const handleAddCommentButton=()=>{
         setAddButton(!addCommentButton);
     }
-    const handleShowComment=(e)=>{
+    const handleShowComment=()=>{
         setShowComments(!showComments);
     }
 
@@ -31,6 +31,7 @@ export default function Comments({postId}){
             body : commentInput
         });
         console.log("Response From API",res.data);
+        setAddButton("")
         }
         catch(err) {
             console.error(err);
