@@ -1,8 +1,8 @@
 import Link from "next/link";
+import axios from "axios";
 export default async function Posts() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-  const posts=await res.json();
-  console.log("posts page");
+  const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
+  const posts= res.data;
   return (
    <>
     <h1 className="text-4xl text-center m-4 mt-8">Posts</h1>
